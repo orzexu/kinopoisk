@@ -1,0 +1,196 @@
+.search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search input[type="text"] {
+    z-index: 1001;
+    padding: 8px;
+    border: 1px solid #8b8b8b;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: #555555;
+    width: 300px;
+    outline: none;
+    color: #fff;
+  }
+
+  .search button {
+    padding: 8px 12px;
+    background-color: #d36600;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .results {
+    margin-top: 35px;
+  }
+  
+  .movie-card {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #818181;
+    border-radius: 4px;
+    padding: 10px;
+    justify-content: space-between;
+  }
+  
+  .movie-card img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .movie-card-desc {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie-card-desc ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .movie-card-desc h3 {
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-card-desc li {
+    margin: 0;
+    font-size: 14px;
+    list-style-type: none;
+  }
+
+  .movie-card-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+  }
+
+  .loader {
+    border: 4px solid #555555;
+    border-top: 4px solid #d36600;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: -35px;
+    left: -768px;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: rgb(41, 41, 41);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    color: #bebebe;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .movie-details {
+    display: flex;
+    gap: 20px; /* Отступ между постером и информацией */
+  }
+  
+  .movie-details img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .details-info {
+    flex: 1;
+  }
+  
+  .details-info h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+  }
+  
+  .details-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #757575;
+  }
+  
+  /* Стили для рейтингов */
+  .ratings {
+    margin-top: 20px;
+  }
+  
+  .ratings h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+  }
+  
+  .rating {
+    margin-bottom: 10px;
+  }
+  
+  .rating strong {
+    font-weight: bold;
+  }
+
+  .search input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    margin-right: 16px;
+  }
+  
+  /* Стили для выпадающих списков */
+  .filter-select,
+  .sort-select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background-color: rgb(214, 214, 214);
+    cursor: pointer;
+    margin-right: 16px;
+  }
+  
+  .filter-select:hover,
+  .sort-select:hover {
+    border-color: #d36600;
+  }
