@@ -51,9 +51,13 @@ export const searchMovies = createAsyncThunk(
 		try {
 			const results = await fetchMovies(query, year)
 			return results
-		} catch (error) {
-			return rejectWithValue(error.message)
-		}
+		} catch (error: unknown) {
+            if (error instanceof Error) {
+              return rejectWithValue(error.message);
+            } else {
+              return rejectWithValue("Произошла неизвестная ошибка");
+            }
+          }
 	}
 )
 
@@ -63,9 +67,13 @@ export const getMovieDetails = createAsyncThunk(
         try {
             const details = await fetchMovieDetails(imdbID)
             return details
-        } catch (error) {
-            return rejectWithValue(error.message)
-        }
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+              return rejectWithValue(error.message);
+            } else {
+              return rejectWithValue("Произошла неизвестная ошибка");
+            }
+          }
     }
 )
 
