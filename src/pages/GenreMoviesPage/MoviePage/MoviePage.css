@@ -1,0 +1,88 @@
+.moviePage-details {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 40px;
+    padding: 30px 0;
+    color: #383838;
+  }
+  
+  /* Постер фильма */
+  .moviePage-poster {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    align-self: start;
+  }
+  
+  .moviePage-poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Информация о фильме */
+  .moviePage-info h1 {
+    font-size: 2.2rem;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  .moviePage-info p {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #1f1f1f;
+  }
+  
+  .moviePage-info strong {
+    color: #383838;
+    font-weight: 600;
+  }
+  
+  .moviePage-info p:has(> strong:contains("Жанры")) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  /* Адаптация под разные экраны */
+  @media (max-width: 992px) {
+    .moviePage-details {
+      grid-template-columns: 300px 1fr;
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .moviePage-details {
+      grid-template-columns: 1fr;
+    }
+    
+    .moviePage-poster {
+      max-width: 350px;
+      margin: 0 auto;
+    }
+    
+    .moviePage-info h1 {
+      font-size: 1.8rem;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .moviePage-poster {
+      max-width: 100%;
+    }
+    
+    .moviePage-info h1 {
+      font-size: 1.6rem;
+    }
+    
+    .moviePage-info p {
+      font-size: 1rem;
+    }
+  }

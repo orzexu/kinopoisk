@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux'
 import { selectFavorites } from '../addToFavSlice'
 import FavoritesCard from './FavoritesCard'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules'
+import { Autoplay, Mousewheel, Navigation, Scrollbar } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
 
 
 const FavoritesSlider: React.FC = () => {
@@ -22,11 +23,18 @@ const FavoritesSlider: React.FC = () => {
 			<div className="favorites-slider-container">
             <h2>Избранное</h2>
 				<Swiper
-                    modules={[Navigation, Pagination]}
+                    modules={[Navigation, Mousewheel, Scrollbar, Autoplay]}
 					spaceBetween={16}
 					slidesPerView={4}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                      }}
+                    centeredSlides={true}
+                    loop={true}
+                    scrollbar={{ draggable: true }}
 					navigation
-					pagination={{ clickable: true }}
+                    mousewheel
 					breakpoints={{
 						320: {
 							slidesPerView: 1,

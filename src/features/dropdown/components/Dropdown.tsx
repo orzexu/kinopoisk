@@ -1,35 +1,53 @@
-
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../../hooks/useAppDispatch'
+import {
+	resetFilters,
+	setCurrentGenre,
+} from '../../../pages/GenreMoviesPage/moviesSlice'
 import './Dropdown.css'
-import { useDispatch, useSelector } from "react-redux"
-import { closeDropdown, toggleDropdown } from "../dropdownSlice"
-import { RootState } from "../../../app/store"
 
-const Dropdown: React.FC = () => {
-    const dispatch = useDispatch()
-    const isOpen = useSelector((state: RootState) => state.dropdown.isOpen)
+const GenreDropdown: React.FC = () => {
+	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
+	const [selectedGenre, setSelectedGenre] = useState('')
+	const genres = [
+		'боевик',
+		'комедия',
+		'фантастика',
+		'ужасы',
+		'триллер',
+		'драма',
+		'криминал',
+		'детектив',
+		'аниме',
+	]
 
-    const handleToggle = () => {
-        dispatch(toggleDropdown())
-    }
+	const handleGenreSelect = (genre: string) => {
+		setSelectedGenre(genre) // Устанавливаем выбранный жанр
+		dispatch(setCurrentGenre(genre))
+		dispatch(resetFilters())
+		navigate(`/genre/${genre}`)
+		setSelectedGenre('') // Сбрасываем после навигации
+	}
 
-    const handleClose = () => {
-        dispatch(closeDropdown())
-    }
-
-    return (
-        <div className="dropdown">
-            <button className="dropdown-button" onClick={handleToggle}>
-                Категории
-            </button>
-            {isOpen && (
-                <div className="dropdown-content" onMouseLeave={handleClose}>
-                    <a href="#">Категория 1</a>
-                    <a href="#">Категория 2</a>
-                    <a href="#">Категория 3</a>
-                </div>
-            )}
-        </div>
-    )
+	return (
+		<div className="genre-dropdown">
+			<select
+				value={selectedGenre}
+				onChange={e => handleGenreSelect(e.target.value)}
+			>
+				<option value="" disabled>
+					Выберите жанр
+				</option>
+				{genres.map(genre => (
+					<option key={genre} value={genre}>
+						{genre}
+					</option>
+				))}
+			</select>
+		</div>
+	)
 }
 
-export default Dropdown
+export default GenreDropdown

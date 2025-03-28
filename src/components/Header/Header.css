@@ -28,3 +28,6 @@ body {
     text-decoration: none;
   }
   
+  .homeIcon {
+    width: 64px;
+  }
